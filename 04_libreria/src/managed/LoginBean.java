@@ -2,12 +2,12 @@ package managed;
 
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 import daos.DaoClientes;
 
 @ManagedBean(name = "loginBean")
-@RequestScoped
+@SessionScoped //se cambiar para que sea un managed de sesion
 public class LoginBean {
 	private String usuario;
 	private String password;
@@ -34,7 +34,7 @@ public class LoginBean {
 			//recuperamos los libros para la vista
 			//en el momento en que el usuario es autenticado
 			//libros=daoLibros.obtenerLibros();
-			return "bienvenida";
+			return "menu";
 		}else {
 			return "error";
 		}

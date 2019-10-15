@@ -7,7 +7,7 @@
 
 <h:head></h:head> 
 <h:body> 
-	<h1>El usuario <h:outputText value="#{loginBean.usuario}" /> está  registrado</h1>
+	<h1><h:outputText value="#{loginBean.usuario}" /></h1>  <!-- Para que salga esto hay que cambiar el manager bean a @SessionScoped -->
 	<br/><br/>
 	<!--  
 		<table	border="1">
@@ -36,6 +36,6 @@
 			</h:column>
 		</h:dataTable>
 	<br/><br/>
-	<h:link outcome="login" value="Volver"/>
+	<h:link outcome="temas" value="Volver"/>
 </h:body> 
 </html>
