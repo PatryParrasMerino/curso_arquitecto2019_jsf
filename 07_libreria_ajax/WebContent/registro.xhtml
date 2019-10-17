@@ -13,7 +13,7 @@
 		Introduce contraseña: <h:inputSecret value="#{registroBean.cliente.password}" /><br/><br/>
 		Introduce telefono: <h:inputText value="#{registroBean.cliente.telefono}" /><br/><br/>
 		Introduce email: <h:inputText value="#{registroBean.cliente.email}" /><br/><br/>
-		<h:commandButton action="#{registroBean.registrar()}" value="Registrar" />	
+		<h:commandButton action="#{registroBean.registrar(registroBean.cliente.email)}" value="Registrar" />	
 	</h:form>
 </center>	
 </h:body> 

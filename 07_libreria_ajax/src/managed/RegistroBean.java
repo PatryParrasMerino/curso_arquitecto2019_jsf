@@ -26,7 +26,7 @@ public class RegistroBean {
 		this.cliente = cliente;
 	}
 	
-	public String registrar() {
+	public String registrar(String email) {
         daoClientes.registrar(cliente);
         return "login";
 	}
