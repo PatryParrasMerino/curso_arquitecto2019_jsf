@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body> 
+<center>
+	<h1>Registro</h1>
+	<h:form>
+		Introduce usuario: <h:inputText value="#{registroBean.cliente.usuario}" required="true" id="usuario"/><br/><br/>
+		<h:message for="usuario" style="color:red;"/><br/><br/>
+		Introduce contraseña: <h:inputSecret value="#{registroBean.cliente.password}" required="true" id="password"/><br/><br/>
+		<h:message for="password" style="color:red;"/><br/><br/>
+		Repite contraseña: <h:inputSecret value="#{registroBean.repetirPassword}" required="true" id="repetirPassword">
+								<f:validator validatorId="vPassword"/>
+						   </h:inputSecret><br/><br/>
+		<h:message for="repetirPassword" style="color:red;"/><br/><br/>
+		Introduce telefono: <h:inputText value="#{registroBean.cliente.telefono}" id="telefono">
+								<f:validateLongRange minimum="1000"/>
+							</h:inputText><br/><br/>
+		<h:message for="telefono" style="color:red;"/><br/><br/>
+		Introduce email: <h:inputText value="#{registroBean.cliente.email}" id="email">
+							<f:validator validatorId="vEmail"/>
+						 </h:inputText><br/><br/>
+		<h:message for="email" style="color:red;"/><br/><br/>
+		<h:commandButton action="#{registroBean.registrar(registroBean.cliente.email)}" value="Registrar" />	
+	</h:form>
+</center>	
+</h:body> 
+</html>
