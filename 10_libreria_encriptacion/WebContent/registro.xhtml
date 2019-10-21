@@ -11,10 +11,13 @@
 	<h:form>
 		Introduce usuario: <h:inputText value="#{registroBean.cliente.usuario}" required="true" id="usuario"/><br/><br/>
 		<h:message for="usuario" style="color:red;"/><br/><br/>
-		Introduce contraseña: <h:inputSecret value="#{registroBean.cliente.password}" required="true" id="password"/><br/><br/>
+		Introduce contraseña: <h:inputSecret value="#{registroBean.cliente.password}" required="true" id="password">
+								<f:converter converterId="convertirPassword"></f:converter>
+							  </h:inputSecret><br/><br/>
 		<h:message for="password" style="color:red;"/><br/><br/>
 		Repite contraseña: <h:inputSecret value="#{registroBean.repetirPassword}" required="true" id="repetirPassword">
 								<f:validator validatorId="vPassword"/>
+								<f:converter converterId="convertirPassword"></f:converter>
 						   </h:inputSecret><br/><br/>
 		<h:message for="repetirPassword" style="color:red;"/><br/><br/>
 		Introduce telefono: <h:inputText value="#{registroBean.cliente.telefono}" id="telefono">
