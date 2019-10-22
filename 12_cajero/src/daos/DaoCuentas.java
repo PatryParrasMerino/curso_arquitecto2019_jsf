@@ -8,5 +8,7 @@ import model.Cuenta;
 
 @Local
 public interface DaoCuentas {
-	List<Cuenta> dameCuentas();
+	Cuenta findCuenta(int numeroCuenta);
+	void updateCuenta(Cuenta c);
+	List<Cuenta> findAllCuentas();
 }

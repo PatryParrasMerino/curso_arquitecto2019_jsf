@@ -9,8 +9,8 @@ import model.Cliente;
 
 @Local
 public interface DaoClientes {
-	void altaClientes(Cliente cliente);
+	void altaCliente(Cliente cliente);
 	List<Cliente> clientesDeCuenta(int numeroCuenta);
 	void eliminarCliente(int idCliente);
-	List<Cliente> clientesConMovimientosFecha(Date fecha); //que clientes realizaron movimientos en una fecha dada
+	List<Cliente> clientesConMovimientosFecha(Date fecha);
 }

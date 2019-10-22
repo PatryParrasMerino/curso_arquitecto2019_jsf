@@ -27,13 +27,14 @@ public class Cliente implements Serializable {
 	//bi-directional many-to-many association to Cuenta
 	@ManyToMany(cascade = CascadeType.REMOVE)
 	@JoinTable(name = "titulares",
-				joinColumns = @JoinColumn(name="IdCliente", referencedColumnName = "dni"), //Cliente
-				inverseJoinColumns = @JoinColumn(name="idCuenta", referencedColumnName = "numeroCuenta")) //Cuenta
+				joinColumns = @JoinColumn(name="idCliente",referencedColumnName = "dni"),
+				inverseJoinColumns =@JoinColumn(name="idCuenta",referencedColumnName = "numeroCuenta"))
 	private List<Cuenta> cuentas;
 
 	public Cliente() {
 	}
-
+	
+	
 	public Cliente(int dni, String direccion, String nombre, int telefono) {
 		super();
 		this.dni = dni;
@@ -41,6 +42,7 @@ public class Cliente implements Serializable {
 		this.nombre = nombre;
 		this.telefono = telefono;
 	}
+
 
 	public int getDni() {
 		return this.dni;

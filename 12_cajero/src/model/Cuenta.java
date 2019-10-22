@@ -21,11 +21,9 @@ public class Cuenta implements Serializable {
 	private double saldo;
 
 	private String tipocuenta;
-	
-	List<Cuenta> cuentas;
 
 	//bi-directional many-to-one association to Movimiento
-	@OneToMany(mappedBy="cuenta", cascade = {CascadeType.REMOVE,CascadeType.MERGE})
+	@OneToMany(mappedBy="cuenta",cascade = {CascadeType.REMOVE,CascadeType.MERGE})
 	private List<Movimiento> movimientos;
 
 	//bi-directional many-to-many association to Cliente
@@ -95,15 +93,5 @@ public class Cuenta implements Serializable {
 	public void setClientes(List<Cliente> clientes) {
 		this.clientes = clientes;
 	}
-
-	public List<Cuenta> getCuentas() {
-		return cuentas;
-	}
-
-	public void setCuentas(List<Cuenta> cuentas) {
-		this.cuentas = cuentas;
-	}
-	
-	
 
 }

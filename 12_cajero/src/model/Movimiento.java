@@ -28,7 +28,7 @@ public class Movimiento implements Serializable {
 
 	//bi-directional many-to-one association to Cuenta
 	@ManyToOne
-	@JoinColumn(name="idCuenta", referencedColumnName = "numeroCuenta")
+	@JoinColumn(name="idCuenta",referencedColumnName = "numeroCuenta")
 	private Cuenta cuenta;
 
 	public Movimiento() {

@@ -3,7 +3,6 @@ package daos;
 import java.util.Date;
 import java.util.List;
 
-import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,16 +14,15 @@ import model.Cliente;
  * Session Bean implementation class DaoClientesImpl
  */
 @Stateless
-@LocalBean
 public class DaoClientesImpl implements DaoClientes {
 
-	@PersistenceContext(unitName = "bancabdPU")
+	@PersistenceContext(unitName = "cajeroPU")
 	EntityManager em;
-	
-	
+
 	@Override
-	public void altaClientes(Cliente cliente) {
-		em.persist(cliente);		
+	public void altaCliente(Cliente cliente) {
+		em.persist(cliente);
+		
 	}
 
 	@Override
@@ -48,9 +46,14 @@ public class DaoClientesImpl implements DaoClientes {
 
 	@Override
 	public List<Cliente> clientesConMovimientosFecha(Date fecha) {
-		String jpql="Select c from Cliente c join c.cuentas t join t.movimientos m Where m.fecha=?1";
+		String jpql="Select c From Cliente c join c.cuentas t join t.movimientos m ";
+		jpql+="Where m.fecha=?1";
 		Query qr=em.createQuery(jpql);
 		qr.setParameter(1, fecha);
-		return (List<Cliente>)qr.getResultList();
+		return (List<Cliente>)qr.getResultList();	
 	}
+	
+	
+	
+
 }

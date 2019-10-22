@@ -9,5 +9,7 @@ import model.Movimiento;
 
 @Local
 public interface DaoMovimientos {
-	List<Movimiento> dameMovimientosFecha(Date fecha);
+	void saveMovimiento(Movimiento m);
+	
+	List<Movimiento> findMovimientosByCuenta(int numeroCuenta, Date fechaini, Date fechafin);
 }

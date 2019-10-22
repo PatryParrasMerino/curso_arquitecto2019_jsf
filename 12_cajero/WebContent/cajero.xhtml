@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head>
+
+</h:head> 
+<h:body> 
+	<div>
+		<p:messages>
+        	<p:autoUpdate/>
+    	</p:messages>
+		<h:form >
+	   		<p:outputLabel value="Seleccione Cuenta:" />
+	   		<p:selectOneMenu value="#{movimientosBeans.cuentaSel}" style="width:30%" required="true">
+				<f:selectItems var="c" value="#{movimientosBeans.cuentas}" itemLabel="#{c.numeroCuenta}" itemValue="#{c.numeroCuenta}"/>
+			</p:selectOneMenu><br/>
+			<p:outputLabel value="Fecha Inicio:"/>
+			<p:calendar id="fecIni" mode="popup" value="#{movimientosBeans.fechaini}" style="width:30%" required="true"/>
+			<p:outputLabel value="Fecha Fin:"/>
+			<p:calendar mode="popup" value="#{movimientosBeans.fechafin}" style="width:30%" required="true">
+				<f:validator validatorId="vFechas"/>
+			</p:calendar>
+				
+			<br/>
+			<p:commandButton value="consultar" action="#{movimientosBeans.recuperarMovimientos()}" update="movimientos"/>
+       </h:form><br/>
+				<p:dataTable id="movimientos" var="m" value="#{movimientosBeans.movimientos}">
+					<p:column>
+						<f:facet name="header">Cuenta</f:facet>
+						#{m.cuenta.numeroCuenta}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Operacion</f:facet>
+						#{m.operacion}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Fecha</f:facet>
+						#{m.fecha}
+					</p:column>
+					<p:column>
+						<f:facet name="header">Cantidad</f:facet>
+						#{m.cantidad}
+					</p:column>
+				</p:dataTable>	
+	</div>
+</h:body> 
+</html>
