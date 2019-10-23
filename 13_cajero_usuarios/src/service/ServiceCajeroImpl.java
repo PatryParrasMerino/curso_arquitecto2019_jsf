@@ -17,7 +17,7 @@ import model.Movimiento;
  * Session Bean implementation class ServiceCajeroImpl
  */
 @Stateless
-public class ServiceCajeroImpl implements ServiceCajero {
+public class ServiceCajeroImpl implements ServiceCajero { //no se sabe que acceso a datos se está usando
 
 	@EJB
 	DaoClientes daoClientes;
@@ -39,38 +39,41 @@ public class ServiceCajeroImpl implements ServiceCajero {
 			daoCuentas.updateCuenta(cuenta);
 			Movimiento m =new Movimiento(0, cantidad, new Date(), "extracción", cuenta);
 			daoMovimientos.saveMovimiento(m);
+		}else {
+			throw new RuntimeException(); // Se provoca la expección si no hay saldo suficiente para que en transferencia se cancele la transacción
 		}
 		
 	}
 
 	@Override
 	public void ingreso(int idCuenta, double cantidad) {
-		// TODO Auto-generated method stub
-		
+		Cuenta cuenta=obtenerCuenta(idCuenta);
+		cuenta.setSaldo(cuenta.getSaldo()+cantidad);
+		daoCuentas.updateCuenta(cuenta);
+		Movimiento m =new Movimiento(0, cantidad, new Date(), "ingreso", cuenta);
+		daoMovimientos.saveMovimiento(m);
 	}
 
 	@Override
 	public void transferencia(int idCuentaOrigen, int idCuentaDestino, double cantidad) {
-		// TODO Auto-generated method stub
-		
+		extraccion(idCuentaOrigen, cantidad);
+		ingreso(idCuentaDestino, cantidad);
 	}
 
 	@Override
-	public List<Cliente> obtenerTitulares(int idCuenta) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Cliente> obtenerTitulares(int idCuenta) {		
+		return daoClientes.findClienteByCuenta(idCuenta);
 	}
 
 	@Override
 	public List<Movimiento> obtenerMovimientos(int idCuenta) {
-		// TODO Auto-generated method stub
-		return null;
+		return daoMovimientos.findMovimientoByCuenta(idCuenta);
 	}
 
 	@Override
 	public double obtenerSaldo(int idCuenta) {
-		// TODO Auto-generated method stub
-		return 0;
+		Cuenta cuenta=daoCuentas.findCuenta(idCuenta);
+		return cuenta.getSaldo();
 	}
 
 
