@@ -5,7 +5,7 @@
     <id>UMLActor</id>
     <coordinates>
       <x>70</x>
-      <y>130</y>
+      <y>120</y>
       <w>60</w>
       <h>110</h>
     </coordinates>
@@ -153,12 +153,12 @@ datos cliente</panel_attributes>
     <id>Relation</id>
     <coordinates>
       <x>120</x>
-      <y>150</y>
+      <y>140</y>
       <w>110</w>
-      <h>40</h>
+      <h>50</h>
     </coordinates>
     <panel_attributes/>
-    <additional_attributes>10.0;20.0;90.0;20.0</additional_attributes>
+    <additional_attributes>10.0;20.0;90.0;30.0</additional_attributes>
   </element>
   <element>
     <id>Relation</id>
